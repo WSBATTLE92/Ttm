@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTM Church | Dina Nath Official</title>
+    <!-- CSS Frameworks -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,700&family=Plus+Jakarta+Sans:wght@300;400;700;800&family=Cinzel:wght@400;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --navy: #0a192f;
+            --gold: #D4AF37;
+            --gold-glow: rgba(212, 175, 55, 0.4);
+            --black-vip: #080808;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fcfcfc;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-outfit { font-family: 'Outfit', sans-serif; }
+        
+        /* Main Gradients */
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(10, 25, 47, 0.9) 0%, rgba(10, 25, 47, 0.4) 60%, #fcfcfc 100%);
+        }
+        .youth-gradient { background: linear-gradient(135deg, #0a192f 0%, #1e3a8a 100%); }
+        .girls-gradient { background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%); }
+        .kids-gradient { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); }
+        .service-pattern {
+            background-image: radial-gradient(#fbbf24 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+        
+        /* Navigation Scroll */
+        .nav-scrolled {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1) !important;
+            height: 80px !important;
+        }
+
+        /* VIP DONATION OVERLAY */
+        #donation-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: radial-gradient(circle at 2% 2%, #1a1500 0%, #080808 40%);
+            overflow-y: auto;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+        }
+        .gold-text { color: var(--gold); text-shadow: 0 0 10px var(--gold-glow); }
+        .gold-bg { background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%); }
+        .vip-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        .input-vip {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: white;
+        }
+        .input-vip:focus { border-color: var(--gold) !important; box-shadow: 0 0 15px var(--gold-glow); outline: none; }
+        .btn-gold { background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%); color: black; font-weight: 700; }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(200%) rotate(45deg); }
+        }
+        .shine-effect { position: relative; overflow: hidden; }
+        .shine-effect::after {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(transparent, rgba(255,255,255,0.2), transparent);
+            transform: rotate(45deg); animation: shine 3s infinite;
+        }
+
+        .gold-glow { text-shadow: 0 0 20px rgba(251, 191, 36, 0.5); }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #0a192f; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-[100] h-24 flex items-center transition-all duration-500 bg-transparent">
+        <div class="max-w-7xl mx-auto px-6 w-full flex justify-between items-center">
+            <div class="flex items-center gap-4 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <img src="https://i.ibb.co/Vcc76TY0/FB-IMG-1769278643827.jpg" class="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-amber-400 object-cover shadow-lg" alt="TTM Logo">
+                <div class="hidden sm:block">
+                    <h1 class="text-lg font-serif font-black text-[#0a192f] leading-none uppercase">TTM CHURCH</h1>
+                    <p class="text-[7px] tracking-[0.3em] font-bold text-amber-600 uppercase">Dina Nath, Pakistan</p>
+                </div>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center gap-6">
+                <a href="#home" class="text-[10px] font-extrabold uppercase tracking-widest text-[#0a192f] hover:text-amber-600 transition-all">Home</a>
+                <a href="#sunday-service" class="text-[10px] font-extrabold uppercase tracking-widest text-[#0a192f] hover:text-amber-600 transition-all">Service</a>
+                <a href="#youth" class="text-[10px] font-extrabold uppercase tracking-widest text-[#0a192f] hover:text-amber-600 transition-all">Youth</a>
+                <a href="#girls-youth" class="text-[10px] font-extrabold uppercase tracking-widest text-[#0a192f] hover:text-amber-600 transition-all">Girls</a>
+                <a href="#sunday-school" class="text-[10px] font-extrabold uppercase tracking-widest text-[#0a192f] hover:text-amber-600 transition-all">Kids</a>
+                <button onclick="toggleDonation(true)" class="bg-[#0a192f] text-white px-6 py-2.5 rounded-full text-[10px] font-black tracking-widest hover:bg-amber-500 transition-all uppercase flex flex-col items-center leading-none">
+                    <i data-lucide="heart" class="w-3 h-3 mb-0.5"></i>
+                    <span>Donation</span>
+                </button>
+            </div>
+
+            <!-- Mobile Donation Button -->
+            <div class="lg:hidden flex flex-col items-center">
+                <button onclick="toggleDonation(true)" class="text-[#0a192f] flex flex-col items-center">
+                    <i data-lucide="heart" class="w-6 h-6"></i>
+                    <span class="text-[8px] font-bold uppercase mt-1">Donation</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="hero-gradient absolute inset-0 z-10"></div>
+            <img src="https://i.ibb.co/B5KfCrG9/Screenshot-20260124-230837.png" class="w-full h-full object-cover" alt="Background">
+        </div>
+        <div class="relative z-20 text-center px-6 max-w-5xl">
+            <h1 class="text-7xl md:text-[9rem] font-serif font-black text-white leading-[0.85] mb-6 tracking-tighter drop-shadow-2xl" data-aos="zoom-out">
+                Divine <br><span class="text-amber-400 italic gold-glow">Grace</span>
+            </h1>
+            <p class="text-white/90 text-lg md:text-xl font-light tracking-wide max-w-2xl mx-auto mb-10" data-aos="fade-up" data-aos-delay="300">
+                Experience the power of the Holy Spirit at Transforming Truth Ministry, Dina Nath.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center" data-aos="fade-up" data-aos-delay="500">
+                <a href="#contact" class="bg-amber-400 text-[#0a192f] px-10 py-5 rounded-2xl font-black text-sm tracking-widest uppercase shadow-2xl hover:scale-105 transition-transform">Get Involved</a>
+                <a href="https://chat.whatsapp.com/C2axR5ZXrEZCk72vqVkkIe" target="_blank" class="text-white font-bold tracking-widest uppercase hover:text-amber-400 flex items-center gap-2">Join Community &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section id="leadership" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-6xl font-serif font-black text-[#0a192f] italic tracking-tight">Our Spiritual Leaders</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="relative group rounded-[2rem] overflow-hidden shadow-2xl h-[500px]" data-aos="fade-right">
+                    <img src="https://i.ibb.co/C3pgVY1g/FB-IMG-1769278494739.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#0a192f] to-transparent"></div>
+                    <div class="absolute bottom-8 left-8 text-white">
+                        <h3 class="text-2xl font-serif font-black">Saleema Bhatti</h3>
+                        <p class="text-amber-400 text-xs font-bold uppercase tracking-widest">Visionary Founder</p>
+                    </div>
+                </div>
+                <div class="relative group rounded-[2rem] overflow-hidden shadow-2xl h-[500px]" data-aos="fade-left">
+                    <img src="https://i.ibb.co/Psm0ftPf/FB-IMG-1769278361471.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#0a192f] to-transparent"></div>
+                    <div class="absolute bottom-8 left-8 text-white">
+                        <h3 class="text-2xl font-serif font-black">Pastor Shahbaz</h3>
+                        <p class="text-amber-400 text-xs font-bold uppercase tracking-widest">Presiding Pastor</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sunday Service Section -->
+    <section id="sunday-service" class="py-24 service-pattern">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-[#0a192f] rounded-[3rem] flex flex-col lg:flex-row overflow-hidden shadow-2xl" data-aos="fade-up">
+                <div class="lg:w-1/2 p-10 md:p-16 flex flex-col justify-center">
+                    <h2 class="text-4xl md:text-6xl font-serif font-black text-white italic mb-6">Sunday Service</h2>
+                    <p class="text-blue-100/70 text-lg mb-8">Join our main congregation for an atmosphere of worship and transformation. Every Sunday morning at 10:00 AM.</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10">
+                            <span class="block text-amber-400 text-[10px] font-black uppercase mb-1">Time</span>
+                            <span class="text-white font-bold">10:00 AM</span>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10">
+                            <span class="block text-amber-400 text-[10px] font-black uppercase mb-1">Location</span>
+                            <span class="text-white font-bold">Dina Nath</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 h-80 lg:h-auto">
+                    <img src="https://i.ibb.co/99fQrkLy/FB-IMG-1769555896757.jpg" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Youth Meeting Section -->
+    <section id="youth" class="py-24 youth-gradient text-white">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <h2 class="text-5xl md:text-7xl font-serif font-black mb-6 italic text-amber-400 leading-none">Youth <br><span class="text-white">Meeting</span></h2>
+                <p class="text-blue-100/70 text-lg mb-10">Empowering the next generation every Tuesday at 6:00 PM. A place for fire, faith, and fellowship.</p>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://i.ibb.co/tMzzHHn2/IMG-20260113-WA0043.jpg" class="h-64 w-full object-cover rounded-3xl shadow-xl">
+                    <img src="https://i.ibb.co/1t8cwVmb/IMG-20260113-WA0044.jpg" class="h-64 w-full object-cover rounded-3xl shadow-xl mt-8">
+                </div>
+            </div>
+            <div class="lg:pl-12" data-aos="fade-left">
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-[2rem] border border-white/10">
+                    <h4 class="text-xl font-bold mb-4">Every Tuesday</h4>
+                    <ul class="space-y-4 text-blue-100/80">
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-amber-400 rounded-full"></span> Bible Study & Prayer</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-amber-400 rounded-full"></span> Leadership Training</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-amber-400 rounded-full"></span> Praise & Worship</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Girls Youth Meeting -->
+    <section id="girls-youth" class="py-24 girls-gradient">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative" data-aos="zoom-in">
+                    <div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white group">
+                        <img src="https://i.ibb.co/7dnLDW6r/Screenshot-20260128-041022.jpg" class="w-full h-[550px] object-cover transition-transform duration-700 group-hover:scale-105" alt="Girls Meeting">
+                        <div class="absolute inset-0 bg-gradient-to-t from-pink-900/40 via-transparent to-transparent"></div>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2" data-aos="fade-left">
+                    <div class="inline-block px-5 py-2 bg-white/80 shadow-sm rounded-full text-pink-600 text-[10px] font-black uppercase tracking-[0.4em] mb-8 border border-pink-100">Daughters of Faith</div>
+                    <h2 class="text-5xl md:text-8xl font-serif font-black text-[#0a192f] italic mb-8 leading-none tracking-tighter">Girls <br><span class="text-pink-600">Meeting</span></h2>
+                    <p class="text-slate-600 text-xl mb-10 font-medium">Empowering the young women of Dina Nath through spiritual growth and character building.</p>
+                    <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-pink-50 inline-flex flex-col sm:flex-row gap-8 items-start sm:items-center">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-pink-500 rounded-2xl flex items-center justify-center text-white text-2xl">✨</div>
+                            <div>
+                                <p class="text-[10px] font-black uppercase text-pink-400 tracking-widest mb-1">Weekly Meeting</p>
+                                <p class="font-bold text-xl text-[#0a192f]">THUR @ 4:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sunday School Section -->
+    <section id="sunday-school" class="py-24 kids-gradient">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <h2 class="text-5xl md:text-7xl font-serif font-black text-[#0a192f] italic mb-6">Sunday <br><span class="text-amber-600">School</span></h2>
+                <p class="text-slate-600 text-lg mb-8">Teaching our little ones the path of righteousness with love and joy.</p>
+                <div class="flex gap-4">
+                    <div class="w-16 h-1 bg-[#0a192f]"></div>
+                    <p class="font-bold text-[#0a192f] uppercase tracking-widest text-xs">Ages 4 - 12</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
+                <img src="https://i.ibb.co/R42pmtY4/IMG-20260125-WA0015.jpg" class="w-full h-80 object-cover rounded-[3rem] border-4 border-white shadow-xl">
+                <img src="https://i.ibb.co/BHPhXMv3/IMG-20260125-WA0016.jpg" class="w-full h-80 object-cover rounded-[3rem] border-4 border-white shadow-xl mt-12">
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-up">
+                <h2 class="text-5xl font-serif font-black text-[#0a192f] italic leading-tight mb-6">Be Part of Our <br>Family</h2>
+                <p class="text-slate-500 text-lg mb-10">Register via WhatsApp for updates directly from our leadership team.</p>
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-amber-100 flex items-center justify-center rounded-xl text-amber-600">📍</div>
+                        <p class="font-bold">Dina Nath, Punjab, Pakistan</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-green-100 flex items-center justify-center rounded-xl text-green-600">💬</div>
+                        <p class="font-bold">0310 1492351</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-[#0a192f] p-10 rounded-[3rem] shadow-2xl" data-aos="fade-left">
+                <h3 class="text-2xl font-serif font-black text-white mb-6">Quick Registration</h3>
+                <form id="regForm" class="space-y-4">
+                    <input type="text" id="name" placeholder="Full Name" required class="w-full p-4 bg-white/5 border border-white/10 rounded-2xl text-white outline-none">
+                    <input type="tel" id="phone" placeholder="WhatsApp Number" required class="w-full p-4 bg-white/5 border border-white/10 rounded-2xl text-white outline-none">
+                    <textarea id="msg" placeholder="Tell us how we can help..." class="w-full p-4 bg-white/5 border border-white/10 rounded-2xl text-white outline-none h-24"></textarea>
+                    <button type="submit" class="w-full bg-amber-400 text-[#0a192f] py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-white transition-all">Submit to WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIP DONATION OVERLAY -->
+    <div id="donation-overlay">
+        <nav class="p-6 flex justify-between items-center border-b border-white/5 backdrop-blur-xl sticky top-0 z-[10001] bg-[#080808]/90">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 gold-bg rounded-xl flex items-center justify-center rotate-3">
+                    <i data-lucide="cross" class="text-black w-6 h-6"></i>
+                </div>
+                <div>
+                    <h1 class="font-cinzel text-xl font-bold tracking-tighter gold-text">SACREDGIVE</h1>
+                    <p class="text-[8px] uppercase tracking-[0.4em] text-gray-500">Premium Giving Experience</p>
+                </div>
+            </div>
+            <button onclick="toggleDonation(false)" class="p-2 bg-white/10 rounded-full hover:bg-white/20 transition">
+                <i data-lucide="x"></i>
+            </button>
+        </nav>
+
+        <main class="max-w-7xl mx-auto px-6 py-12">
+            <div class="grid lg:grid-cols-12 gap-10">
+                <div class="lg:col-span-8 space-y-8">
+                    <div class="vip-card p-8 rounded-3xl">
+                        <div class="flex justify-between items-start mb-8">
+                            <div>
+                                <span class="px-3 py-1 bg-gold/10 text-gold text-[10px] uppercase tracking-widest rounded-full border border-gold/20">Phase 01</span>
+                                <h2 class="font-cinzel text-2xl mt-2 gold-text">Believer's Profile</h2>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <input type="text" id="donor-name" placeholder="Full Name" class="input-vip w-full p-4 rounded-xl">
+                            <input type="text" id="donor-father" placeholder="Father's Name" class="input-vip w-full p-4 rounded-xl">
+                            <input type="text" id="donor-city" placeholder="City Name" class="input-vip w-full p-4 rounded-xl">
+                            <input type="tel" id="donor-phone" placeholder="03xx xxxxxxx" class="input-vip w-full p-4 rounded-xl">
+                        </div>
+                    </div>
+
+                    <div class="vip-card p-8 rounded-3xl">
+                        <h2 class="font-cinzel text-2xl gold-text mb-8">The Offering</h2>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                            <button onclick="setCat('Tithes', this)" class="cat-btn border border-gold bg-gold/10 p-4 rounded-2xl">Tithes</button>
+                            <button onclick="setCat('Offering', this)" class="cat-btn border border-white/10 p-4 rounded-2xl hover:border-gold">Offering</button>
+                            <button onclick="setCat('Charity', this)" class="cat-btn border border-white/10 p-4 rounded-2xl hover:border-gold">Charity</button>
+                            <button onclick="setCat('Building', this)" class="cat-btn border border-white/10 p-4 rounded-2xl hover:border-gold">Building</button>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute left-6 top-1/2 -translate-y-1/2 gold-text font-bold">PKR</span>
+                            <input type="number" id="amt-input" placeholder="0.00" class="input-vip w-full p-6 pl-20 rounded-2xl text-3xl font-bold tracking-tighter">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4">
+                    <div class="vip-card p-8 rounded-[40px] border-t-8 border-gold h-full sticky top-32">
+                        <h2 class="font-cinzel text-2xl gold-text mb-8 text-center">Secure Gate</h2>
+                        <div class="bg-white/5 border border-gold/20 p-6 rounded-3xl mb-8 text-center">
+                            <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-2">EasyPaisa / JazzCash / Card</p>
+                            <p id="account-num" class="text-3xl font-bold gold-text tracking-tighter mb-4">03284903801</p>
+                            <button onclick="copyToClipboard('03284903801')" class="w-full btn-gold py-3 rounded-xl flex items-center justify-center gap-2 hover:scale-105 transition">
+                                <i data-lucide="copy" class="w-4 h-4"></i> Copy Account Number
+                            </button>
+                        </div>
+                        <div class="space-y-2 text-center mb-8">
+                            <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500">Transaction ID (TID)</label>
+                            <input type="text" id="tid-input" placeholder="Enter Transaction ID" class="input-vip w-full p-4 rounded-xl text-center font-mono text-xl gold-text">
+                        </div>
+                        <button onclick="processVIPDonation()" class="shine-effect w-full btn-gold py-6 rounded-[25px] text-lg uppercase tracking-widest flex items-center justify-center gap-3">
+                            <i data-lucide="send" class="w-6 h-6"></i> Send Notice
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Processing Loader -->
+    <div id="loader" class="fixed inset-0 bg-black/95 z-[20000] flex items-center justify-center hidden">
+        <div class="text-center">
+            <div class="w-20 h-20 border-4 border-gold border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
+            <h3 class="font-cinzel text-2xl gold-text animate-pulse">Processing Verification</h3>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#0a192f] py-16 text-center">
+        <img src="https://i.ibb.co/Vcc76TY0/FB-IMG-1769278643827.jpg" class="w-16 h-16 rounded-full mx-auto mb-6 border-2 border-amber-400 object-cover">
+        <h2 class="text-white font-serif font-black text-2xl italic">TTM Church</h2>
+        <p class="text-amber-400 text-[9px] uppercase tracking-[0.5em] mb-4">Transforming Truth Ministry</p>
+        <p class="text-white/30 text-[8px] uppercase tracking-widest">© 2026 | Dina Nath Branch | Designing by Jozaf Ijaz</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, duration: 800 });
+        lucide.createIcons();
+
+        let activeCat = 'Tithes';
+        const MY_WHATSAPP = "923101492351";
+
+        function toggleDonation(show) {
+            const overlay = document.getElementById('donation-overlay');
+            overlay.style.display = show ? 'block' : 'none';
+            document.body.style.overflow = show ? 'hidden' : 'auto';
+            if(show) window.scrollTo(0,0);
+        }
+
+        function setCat(cat, btn) {
+            activeCat = cat;
+            document.querySelectorAll('.cat-btn').forEach(b => {
+                b.className = 'cat-btn border border-white/10 p-4 rounded-2xl transition hover:border-gold';
+            });
+            btn.className = 'cat-btn border border-gold bg-gold/10 p-4 rounded-2xl transition';
+        }
+
+        function copyToClipboard(text) {
+            const el = document.createElement('textarea');
+            el.value = text;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            
+            const btn = event.currentTarget;
+            const original = btn.innerHTML;
+            btn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> Copied!';
+            lucide.createIcons();
+            setTimeout(() => { btn.innerHTML = original; lucide.createIcons(); }, 2000);
+        }
+
+        async function processVIPDonation() {
+            const data = {
+                name: document.getElementById('donor-name').value,
+                father: document.getElementById('donor-father').value,
+                city: document.getElementById('donor-city').value,
+                phone: document.getElementById('donor-phone').value,
+                amount: document.getElementById('amt-input').value,
+                tid: document.getElementById('tid-input').value,
+                category: activeCat,
+                id: 'BLES-' + Math.floor(100000 + Math.random() * 900000)
+            };
+
+            if (!data.name || !data.city || !data.amount || !data.tid) {
+                alert("Please fill all fields and provide Transaction ID.");
+                return;
+            }
+
+            document.getElementById('loader').classList.remove('hidden');
+
+            const message = 
+                `✨ *SACREDGIVE VIP RECEIPT* ✨%0A` +
+                `🆔 *Blessing ID:* ${data.id}%0A` +
+                `--------------------------------%0A` +
+                `👤 *Name:* ${data.name}%0A` +
+                `⛪ *Father:* ${data.father || 'N/A'}%0A` +
+                `📍 *City:* ${data.city}%0A` +
+                `📱 *Phone:* ${data.phone}%0A` +
+                `🎁 *Category:* ${data.category}%0A` +
+                `💰 *Amount:* PKR ${data.amount}%0A` +
+                `--------------------------------%0A` +
+                `✅ *TID:* ${data.tid}%0A` +
+                `--------------------------------%0A` +
+                `_Sent via TTM Church Official Web_`;
+
+            setTimeout(() => {
+                window.location.href = `https://wa.me/${MY_WHATSAPP}?text=${message}`;
+            }, 2000);
+        }
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) nav.classList.add('nav-scrolled');
+            else nav.classList.remove('nav-scrolled');
+        });
+
+        document.getElementById('regForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const n = document.getElementById('name').value;
+            const p = document.getElementById('phone').value;
+            const m = document.getElementById('msg').value;
+            const text = encodeURIComponent(`† *TTM REGISTRATION*\n\n*Name:* ${n}\n*WhatsApp:* ${p}\n*Message:* ${m}`);
+            window.open(`https://wa.me/923101492351?text=${text}`, '_blank');
+        });
+    </script>
+</body>
+</html>
